@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Index.css">
+</head>
+
+<body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row row-top">
+                <div class="col-lg-2">
+                    <label class="name-label">
+                        Forkify
+                    </label>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <input class="form-control input-search" type="text" placeholder="Search over 100000 recipes..">
+                    <button class="btn btn-primary btn-search">Search</button>
+                </div>
+
+                <div class="col-lg-2 text-center col-view-recipe">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i class="fa fa-object-group "></i>
+                            <label class="lbl-view-bookmarks">View Bookmarks</label>
+                            <div class="div-recipe-dropdown">
+                                <h6 id="bookMarkH6">No recipes are bookmarked yet!</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-2 text-center col-add-recipe">
+                    <i class="fa fa-plus-circle btn-add-recipe"></i>
+                    <label class="lbl-add-recipe">Add Recipe</label>
+                </div>
+                <div class="col-lg-2 col-view-added-recipe">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i class="fa fa-odnoklassniki-square"></i>
+                            <label class="lbl-add-recipe">View Recipe</label>
+                            <div class="div-added-recipe-dropdown">
+                                <h6 id="addedRecipeH6">No recipes are added yet!</h6>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row row-bottom">
+                <div class="col-lg-3 col-disp">
+
+                </div>
+                <div class="col-lg-9 col-individual-recipe">
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay-container">
+        <div class="container cont-add-recipe">
+            <form class="addRecipeForm">
+                <div class="row row-add-recipe">
+                    <div class="col-lg-12 text-center col-add-recipe-heading">
+                        <button class="btn btn-danger btn-close-add-recipe" type="button"><i
+                                class="fa fa-close"></i></button>
+                        <h4> Add your recipe!</h4>
+
+                    </div>
+                    <div class="col-lg-6 col-add-recipe-specifics">
+                        <i class="fa fa-circle"></i>
+                        <h7>
+                            Title
+                        </h7>
+                    </div>
+                    <div class="col-lg-6 col-add-recipe-specifics">
+                        <input class="input-add-recipe-title form-control" />
+                    </div>
+                    <div class="col-lg-6 col-add-recipe-specifics">
+                        <i class="fa fa-image"></i>
+                        <h7>
+                            Image Source
+                        </h7>
+                    </div>
+                    <div class="col-lg-6 col-add-recipe-specifics">
+                        <input class="input-add-recipe-img form-control" />
+                    </div>
+                    <div class="col-lg-6 col-add-recipe-specifics">
+                        <i class="fa fa-book"></i>
+                        <h7>
+                            Publisher
+                        </h7>
+                    </div>
+                    <div class="col-lg-6 col-add-recipe-specifics">
+                        <input class="input-add-recipe-publisher form-control" />
+                    </div>
+                    <div class="col-lg-6 col-add-recipe-specifics">
+                        <i class="fa fa-user-circle"></i>
+                        <h7>
+                            Original URL
+                        </h7>
+                    </div>
+                    <div class="col-lg-6 col-add-recipe-specifics">
+                        <input class="input-add-recipe-url form-control" />
+                    </div>
+                </div>
+                <div class="row row-add-ingredients">
+                    <div class="col-lg-12 text-center col-add-ingredients-heading">
+                        <h6>Add your ingredients!</h6>
+                    </div>
+                    <div class="row row-of-ingredients" id="new-ingredient-1">
+                        <div class="col-lg-3 text-center">
+                            <input class="form-control input-add-ingredient-unit" id="ing-unit-1"
+                                placeholder="Units.." />
+                        </div>
+                        <div class="col-lg-3 text-center">
+                            <input class="form-control input-add-ingredient-parameter" id="ing-parameter-1"
+                                placeholder="Parameters.." />
+                        </div>
+                        <div class="col-lg-5 text-center">
+                            <input class="form-control input-add-ingredient-description" id="ing-description-1"
+                                placeholder="Ingredient description.." />
+                        </div>
+                        <div class="col-lg-1 text-center">
+                            <button class="btn btn-secondary btn-add-row" type="button">+</button>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <h7 class="h-error-msg">Enter a fraction!</h7>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-submit-own-recipe">
+                    <div class="col-lg-12 text-center">
+                        <button class="btn btn-primary btn-save-recipe" type="button">Save</button>
+                    </div>
+            </form>
+        </div>
+
+    </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    let pageCounter = 1;
+    let state;
+    let currentRecipe;
+    let bookMarkedRecipes = new Array();
+    let bookMarkFlag = 0;
+    let addedRecipes = new Array();
+    let numIngredientsNewRecipe = 1;
+
+    //Functions
+
+    const searchResults = async function (query) {
+
+        document.querySelector(`.col-individual-recipe`).innerHTML = ``;
+        let res = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${document.querySelector(`.input-search`).value}`);
+        if (res.ok) {
+            let data = await res.json();
+            state = data;
+            pageCounter = 1;
+            renderRecipes(data.recipes);
+
+        }
+        else alert(`No results found for this search!`);
+
+
+    }
+
+
+    const renderRecipes = recipes => {
+
+        let htmlAllRecipes = ``;
+        let tempRecipes = recipes.slice((pageCounter - 1) * 10, pageCounter * 10);
+        tempRecipes.forEach(cur =>
+            htmlAllRecipes += `<div class="row row-recipes-display" id="rec-${cur.recipe_id}">
+                        <div class="col-lg-4 col-img-recipe">
+                            <img class="img-recipe-icon" src="${cur.image_url}">
+                        </div>
+                        <div class=" col-lg-8 col-recipe-name">
+                            <label class="lbl-recipe-name">
+                                ${cur.title.length > 16 ? `${cur.title.slice(0, 15)}...` : cur.title}
+                            </label>
+                            </div>
+                    </div>
+                    </div>`);
+
+        htmlAllRecipes += `<div class="pagination-panel">
+                        <button class="btn btn-page btn-secondary btn-prev" value="Prev">Prev</button>
+                        <button class="btn btn-dark btn-paging-number">${pageCounter}</button>
+                        <button class="btn btn-page btn-secondary    btn-next" value="Next">Next</button>
+                    </div>`
+
+
+        document.querySelector(`.col-disp`).innerHTML = "";
+        document.querySelector(`.col-disp`).insertAdjacentHTML(`beforeend`, htmlAllRecipes);
+
+    }
+
+
+    const pagination = e => {
+
+        if (e === `Next`) pageCounter += 1;
+        else if (e === `Prev`) pageCounter -= 1;
+
+        renderRecipes(state.recipes);
+
+        if (pageCounter === 1) document.querySelector(`.btn-prev`).disabled = true;
+        else if (pageCounter === 3) document.querySelector(`.btn-next`).disabled = true
+        else {
+            document.querySelector(`.btn-prev`).disabled = false;
+            document.querySelector(`.btn-next`).disabled = false;
+        }
+
+
+    }
+
+
+    const displayIndividualRecipe = async (recid, type) => {
+
+        let recipe;
+
+        if (type === `display`) {
+            let tempRec = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${recid}`);
+            recipe = (await tempRec.json()).recipe;
+            currentRecipe = recipe;
+        }
+
+        else if (type === `added`) recipe = addedRecipes.find(el => el.recipe_id === recid);
+
+        else if (type === `bookmark`) recipe = bookMarkedRecipes.find(el => el.recipe_id === recid)
+
+
+        let accHtml = ``;
+        recipe.ingredients.forEach((el, ind) => accHtml += `<div class="col-lg-1"></div><div class="col-lg-5"><label class="lbl-individual-ingredient">${ind + 1}.  ${el}</label></div>`);
+        let htmlIndividualRecipe = `<div class="row" id=${type}>
+                        <div class="col-lg-12 text-center">
+                            <i class="fa fa-bookmark-o btn-bookmarks" style="font-size:30px;float:right;pointer-events:none; display: ${type == "added" ? "none" : "block"}"></i>
+                            <img class="img-individual-recipe"  
+                                src="${recipe.image_url}">
+
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <label class="lbl-individual-recipe-name">${recipe.title}</label>
+                        </div>
+                    </div>
+
+                    <div class="row row-recipe-additional-information">
+                        <div class="col-lg-12 text-center">
+                            <label class="lbl-recipe-publisher">Publisher: ${recipe.publisher}</label>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <label class="lbl-ingredients">Ingredients</label> 
+                        </div>
+                        ${accHtml}
+                        <div class="col-lg-12 text-center">
+                            <label class="lbl-recipe-source">Orginal Source: <a href="${recipe.source_url}" target="_blank">${recipe.source_url}</a></label>
+                        </div>
+                    </div>`;
+
+        document.querySelector(`.col-individual-recipe`).innerHTML = ``;
+        document.querySelector(`.col-individual-recipe`).insertAdjacentHTML(`beforeend`, htmlIndividualRecipe);
+        document.querySelector(`.btn-bookmarks`).style.pointerEvents = `auto`;
+        checkBookmark(recid);
+
+    }
+
+
+    const addBookmarkedRecipes = () => {
+        bookMarkedRecipes.push(currentRecipe);
+        bookMarkFlag++;
+        renderBookmarkedRecipes();
+        document.getElementById(`bookMarkH6`) ? document.getElementById(`bookMarkH6`).remove() : -1;
+    }
+
+
+    const removeBookmarkedRecipes = recid => {
+        bookMarkedRecipes.splice(bookMarkedRecipes.findIndex(el => el.recipe_id == recid), 1);
+        document.getElementById(recid).remove();
+        checkBookmark(recid);
+        bookMarkFlag--;
+        if (bookMarkFlag === 0)
+            document.querySelector(`.div-recipe-dropdown`).innerHTML = `<h6 id="bookMarkH6">No recipes are bookmarked yet!</h6>`;
+    }
+
+
+    const checkBookmark = recid => {
+
+        if (bookMarkedRecipes.find(el => el.recipe_id == recid)) document.querySelector(`.btn-bookmarks`).className = `fa fa-bookmark btn-bookmarks`
+
+        else document.querySelector(`.btn-bookmarks`).className = `fa fa-bookmark-o btn-bookmarks`
+    }
+
+
+    const renderBookmarkedRecipes = () => {
+
+        let bookmarkHTML = ``;
+
+        bookmarkHTML += `<ul class="list-inline row-recipe-dropdown" id="${currentRecipe.recipe_id}">
+                                <li>
+                                    <img src="${currentRecipe.image_url}"
+                                        class="add-img-recipe">
+                                </li>
+
+                                <li>
+                                    <label class="lbl-add-recipe-title"> ${currentRecipe.title.length > 10 ? `${currentRecipe.title.slice(0, 9)}...` : currentRecipe.title}</label>
+                                    </li>
+
+                                <li class="list-btn-delete"><button class="btn btn-dark btn-delete-recipe">x</button></li>
+                            </ul>`;
+
+        document.querySelector(`.div-recipe-dropdown`).insertAdjacentHTML(`beforeend`, bookmarkHTML);
+    }
+
+
+    const addNewRecipeRow = () => {
+
+        numIngredientsNewRecipe++;
+
+        let newRecipeRowHTML = `<div class="row row-of-ingredients" id="new-ingredient-${numIngredientsNewRecipe}">
+                    <div class="col-lg-3 text-center">
+                            <input class="form-control input-add-ingredient-unit" id="ing-unit-${numIngredientsNewRecipe}" placeholder="Units.." />
+                        </div>
+                        <div class="col-lg-3 text-center">
+                            <input class="form-control input-add-ingredient-parameter" id="ing-parameter-${numIngredientsNewRecipe}" placeholder="Parameters.." />
+                        </div>
+                        <div class="col-lg-5 text-center">
+                            <input class="form-control input-add-ingredient-description" id="ing-description-${numIngredientsNewRecipe}"
+                                placeholder="Ingredient description.." />
+                        </div>
+                    <div class="col-lg-1 text-center">
+                    </div>
+                    </div>`;
+
+        document.querySelector(`.row-add-ingredients`).insertAdjacentHTML(`beforeend`, newRecipeRowHTML);
+    }
+
+
+    const unitIngredients = (that) => {
+
+        let val = Number(that.value.substr(-1, 1));
+
+        if (isNaN(val)) {
+            that.value = that.value.slice(0, that.value.indexOf(val));
+        }
+    }
+
+
+    const validateNewRecipe = () => {
+
+        if (document.querySelector(`.input-add-recipe-title`).value !== `` && document.querySelector(`.input-add-recipe-img`).value !== `` && document.querySelector(`.input-add-recipe-publisher`).value !== `` && document.querySelector(`.input-add-recipe-url`).value !== ``) {
+
+            let ingredientsArray = new Array();
+            for (let i = 1; i <= numIngredientsNewRecipe; i++) {
+                ingredientsArray.push(document.querySelector(`#ing-unit-${i}`).value + " " + document.querySelector(`#ing-parameter-${i}`).value + " " + document.querySelector(`#ing-description-${i}`).value);
+            }
+
+            let newRecipeObj = {
+                recipe_id: `00${addedRecipes.length + 1}`,
+                title: document.querySelector(`.input-add-recipe-title`).value,
+                image_url: document.querySelector(`.input-add-recipe-img`).value,
+                publisher: document.querySelector(`.input-add-recipe-publisher`).value,
+                source_url: document.querySelector(`.input-add-recipe-url`).value,
+                ingredients: ingredientsArray
+
+            }
+
+            addedRecipes.push(newRecipeObj);
+            document.getElementById(`addedRecipeH6`) ? document.getElementById(`addedRecipeH6`).remove() : -1;
+            renderAddedRecipes(newRecipeObj);
+            document.querySelector(`.addRecipeForm`).reset();
+            document.querySelector(`.overlay-container `).style.display = `none`;
+            alert(`Your recipe has been added successfully!`);
+
+
+        }
+        else {
+            alert(`Please fill all details!`);
+        }
+    }
+
+
+    const bookMarkEvent = function (event) {
+
+        let node = event.target;
+
+        if (node.className.includes(`btn-bookmarks`)) {
+            if (node.className.includes(`-o`)) {
+                addBookmarkedRecipes();
+                node.className = `fa fa-bookmark btn-bookmarks`;
+            }
+
+            else {
+                removeBookmarkedRecipes(currentRecipe.recipe_id);
+                node.className = `fa fa-bookmark-o btn-bookmarks`;
+            }
+        }
+
+    }
+
+
+    const renderAddedRecipes = rec => {
+
+        let addRecipeHTML = ``;
+
+        addRecipeHTML += `<ul class="list-inline row-recipe-dropdown" id="${rec.recipe_id}">
+                        <li>
+                            <img src="${rec.image_url}"
+                                class="add-img-recipe">
+                        </li>
+
+                        <li>
+                            <label class="lbl-add-recipe-title"> ${rec.title.length > 10 ? `${rec.title.slice(0, 9)}...` : rec.title}</label>
+                            </li>
+
+                        <li class="list-btn-delete"><button class="btn btn-dark btn-delete-recipe">x</button></li>
+                    </ul>`;
+
+        document.querySelector(`.div-added-recipe-dropdown`).insertAdjacentHTML(`beforeend`, addRecipeHTML);
+    }
+
+
+    const deleteAddedRecipes = rec => {
+        addedRecipes.splice(addedRecipes.findIndex(el => el.recipe_id == rec), 1);
+        document.getElementById(rec).remove();
+        if (!addedRecipes.length) {
+            document.querySelector(`.div-added-recipe-dropdown`).innerHTML = '<h6 id="addedRecipeH6">No recipes are added yet!</h6>';
+        }
+    }
+
+    //Events
+
+
+    document.querySelector(`.btn-search`).addEventListener(`click`, () => { searchResults(document.querySelector(`.input-search`).value) })
+
+
+    document.querySelector('.col-disp').addEventListener('click', (event) => {
+
+        if (event.target.value === `Next` || event.target.value === `Prev`) {
+            pagination(event.target.value);
+        }
+        else {
+            if (event.target.className === `img-recipe-icon` || event.target.className === `lbl-recipe-name`) {
+                displayIndividualRecipe(event.target.parentNode.parentNode.id.split(`-`)[1], `display`);
+            }
+        }
+    });
+
+
+    document.querySelector(`.col-view-recipe`).addEventListener('mouseover', () => document.querySelector(`.div-recipe-dropdown`).style.display = 'block');
+
+
+    document.querySelector(`.col-view-recipe`).addEventListener(`mouseout`, () => document.querySelector(`.div-recipe-dropdown`).style.display = `none`);
+
+
+    document.querySelector(`.div-recipe-dropdown`).addEventListener(`click`, function (event) {
+
+        if (event.target.className.includes(`btn-delete-recipe`)) removeBookmarkedRecipes(event.target.parentNode.parentNode.id);
+
+        else if (event.target.className.includes(`add-img-recipe`) || event.target.className.includes(`lbl-add-recipe-title`))
+            displayIndividualRecipe(event.target.parentNode.parentNode.id, `bookmark`);
+
+    });
+
+
+    document.querySelector(`.btn-add-row`).addEventListener(`click`, addNewRecipeRow);
+
+
+    document.querySelector(`.input-add-ingredient-unit`).addEventListener(`keyup`, function () {
+        unitIngredients(this);
+    });
+
+
+    document.querySelector(`.btn-save-recipe`).addEventListener(`click`, validateNewRecipe);
+
+
+    document.querySelector(`.btn-close-add-recipe`).addEventListener(`click`, () => document.querySelector(`.overlay-container`).style.display = `none`);
+
+
+    document.querySelector(`.col-add-recipe`).addEventListener(`click`, () => document.querySelector(`.overlay-container`).style.display = `block`);
+
+
+    document.querySelector(`.col-individual-recipe`).addEventListener(`click`, function () {
+        bookMarkEvent(event);
+    });
+
+
+    document.querySelector(`.col-view-added-recipe`).addEventListener('mouseover', () => document.querySelector(`.div-added-recipe-dropdown`).style.display = 'block');
+
+
+    document.querySelector(`.col-view-added-recipe`).addEventListener(`mouseout`, () => document.querySelector(`.div-added-recipe-dropdown`).style.display = `none`);
+
+
+    document.querySelector(`.div-added-recipe-dropdown`).addEventListener(`click`, function (event) {
+
+        if (event.target.className.includes(`btn-delete-recipe`)) deleteAddedRecipes(event.target.parentNode.parentNode.id);
+
+        else if (event.target.className.includes(`add-img-recipe`) || event.target.className.includes(`lbl-add-recipe-title`))
+            displayIndividualRecipe(event.target.parentNode.parentNode.id, `added`);
+
+    });
+
+
+</script>
